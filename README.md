@@ -1,14 +1,14 @@
 # My Google Blogger 
 This is the example that I use to write my Blogger articles.
 
-## Selenium 
+## 1. Selenium 
 blogger: https://jacksonxu-notes.blogspot.com/2022/12/seleium-yahoo.html
 
 ### How to use:
 1. Install requirements txt file with `pip3 install -r requirements.txt`
 2. Run python script `python3 example_1_yahoo_stock.py`
 
-## Docker 
+## 2. Docker 
 blogger: https://jacksonxu-notes.blogspot.com/2022/12/blog-post.html
 
 ### How to use:
