@@ -1,4 +1,4 @@
-## 3. Selenium - UI testing
+Selenium - UI testing
 blogger: https://jacksonxu-notes.blogspot.com/2023/01/python-selenium-pytest-ui-google.html
 
 ### How to use:
