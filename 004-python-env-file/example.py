@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # 讀取 API 金鑰從環境變數
-api_key = os.getenv("api_key")
+api_key = os.getenv("API_KEY")
 
 # 打印 API 金鑰
 print("API 金鑰:", api_key)
