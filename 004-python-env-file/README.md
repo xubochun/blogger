@@ -22,6 +22,35 @@ pipeline {
 USER_NAME=${USER_NAME}
 USER_PASSWORD=${USER_PASSWORD}
 ```
+最後，以下是 Jenkins pipeline:
+```
+pipeline {
+    agent {
+        label 'jenkins_agent1'
+    }
+    
+    environment {
+        USER_NAME = credentials('my-credentials')
+        USER_PASSWORD = credentials('my-credentials')
+    }
+    
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Xubochun/blogger'
+            }
+        }
+        
+        stage('Run example.py') {
+            steps {
+                dir('004-python-env-file') {
+                    bat "C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Python310\\python.exe example.py ${USER_NAME} ${USER_PASSWORD}"
+                }
+            }
+        }
+    }
+}
+```
 
 #### 2. 設定 parameters 的方式來存取 API_KEY，缺點是每次執行 Jenkins Pipeline 時都得要重新輸入一次 API_KEY。
 ```jenkinsfile

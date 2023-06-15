@@ -15,3 +15,9 @@ def example_1():
 def test_example_2():
     print('\n hello, world!')
     assert False
+
+
+def test_example_3(get_env_data):
+    name, password = get_env_data
+    assert name == 'jackson'
+    assert password == '123456'
