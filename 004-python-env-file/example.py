@@ -1,11 +1,17 @@
 import os
+import pytest
 from dotenv import load_dotenv
 
-# 載入 .env 檔案
-load_dotenv()
 
-# 讀取 API 金鑰從環境變數
-api_key = os.getenv("API_KEY")
+def example_1():
+    # load the .env file
+    load_dotenv()
+    # get api_key
+    api_key = os.getenv("API_KEY")
+    print("API_KEY:", api_key)
 
-# 打印 API 金鑰
-print("API 金鑰:", api_key)
+
+@pytest.mark.usefixtures('get_env_data')
+def test_example_2():
+    print('\n hello, world!')
+    assert False
