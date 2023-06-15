@@ -19,5 +19,7 @@ def test_example_2():
 
 def test_example_3(get_env_data):
     name, password = get_env_data
+    print('name:', name)
+    print('password:', password)
     assert name == 'jackson'
-    assert password == '1234567'
+    assert password == '123456'

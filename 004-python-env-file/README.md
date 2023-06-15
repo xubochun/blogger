@@ -28,23 +28,18 @@ pipeline {
     agent {
         label 'jenkins_agent1'
     }
-    
-    environment {
-        USER_NAME = credentials('my-credentials')
-        USER_PASSWORD = credentials('my-credentials')
-    }
-    
     stages {
         stage('Clone Repository') {
             steps {
                 git branch: 'main', url: 'https://github.com/Xubochun/blogger'
             }
         }
-        
         stage('Run example.py') {
             steps {
-                dir('004-python-env-file') {
-                    bat "C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Python310\\python.exe example.py ${USER_NAME} ${USER_PASSWORD}"
+                withCredentials([usernamePassword(credentialsId: 'ea39b082-892e-4fde-99b7-766f228b1fa8', usernameVariable: 'USER_NAME', passwordVariable: 'USER_PASSWORD')]) {
+                    dir('004-python-env-file') {
+                        bat "C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Python310\\python.exe -m pytest -k test_example_3 example.py"
+                    }
                 }
             }
         }
