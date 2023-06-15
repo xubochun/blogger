@@ -1,7 +1,30 @@
 ## Jenkins Pipeline
 
-1. 設定 parameters 的方式來存取 API_KEY，缺點是每次執行 Jenkins Pipeline 時都得要重新輸入一次 API_KEY。
+####  1. 如果你希望隱藏敏感的環境變數值，可以在 Jenkins 中使用 Credential 插件來管理這些敏感資訊。Credential 插件可以將敏感資訊加密並儲存起來，只有授權的使用者可以解密和存取這些資訊。
+```Jenkinsfile
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'my-credentials', usernameVariable: 'USER_NAME', passwordVariable: 'USER_PASSWORD')]) {
+                    sh 'echo $USER_NAME'
+                    sh 'echo $USER_PASSWORD'
+                }
+            }
+        }
+    }
+}
 ```
+此時，`.env.bate`需要修改如下:
+```
+USER_NAME=${USER_NAME}
+USER_PASSWORD=${USER_PASSWORD}
+```
+
+#### 2. 設定 parameters 的方式來存取 API_KEY，缺點是每次執行 Jenkins Pipeline 時都得要重新輸入一次 API_KEY。
+```jenkinsfile
 pipeline {
     agent {
         label 'jenkins_agent1'
