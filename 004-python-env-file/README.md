@@ -1,5 +1,6 @@
 ## Jenkins Pipeline
 
+1. 設定 parameters 的方式來存取 API_KEY，缺點是每次執行 Jenkins Pipeline 時都得要重新輸入一次 API_KEY。
 ```
 pipeline {
     agent {
